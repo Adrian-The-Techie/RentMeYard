@@ -1,0 +1,1 @@
+web: gunicorn RentMeYard.wsgi --log-file -

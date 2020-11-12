@@ -1,0 +1,93 @@
+.specific-service-title{
+    height: 30vh;
+    background: map-get($map: $themeColors, $key: 'grey');
+}
+.specific-service{
+    .messages{
+        ul{
+            li{
+                list-style-type:none  
+            }
+        }
+    }
+    .thumbnail-container{
+        width:90%;
+        margin: 0 auto;
+        img{
+            max-width: 100%;
+            height:150px
+        }
+    }
+    .details{
+        .specific-detail{
+            display: flex;
+            #title{
+                font-weight:600;
+            }
+            #category-detail{
+                margin-top: .2rem;
+                height: 20px;
+                p{
+                    font-style:italic;
+                }
+            }
+            .service-detail{
+                display: flex;
+                p{
+                    font-style:italic;
+                }
+                #packages-badge{
+                    height: 20px;
+                }
+            }
+        }  
+    }
+    .other-services{
+        z-index: 0;
+        .other-service{
+            width: 70%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem auto;
+            background-color: grey;
+            p{
+                color: rgb(240, 230, 230);
+                font-size: 18px;
+            }
+            .view-service-btn{
+                position: absolute;
+                bottom: 20%;
+                width:50%;
+                height: 30px;
+                background: $btnBgColor;
+                border-radius: 20px;
+                a{
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+    .master-container{
+        .report-form-container, .comment-form-container{
+            background: map-get($map: $themeColors, $key: 'grey');
+            .report-form-title{
+                p{
+                    font-size: 25px;
+                    font-weight: 600;
+                }
+            }
+            .report-form{
+                form{
+                    .btn{
+                        background-color: map-get($map: $themeColors, $key: 'orange')!important;
+                    }  
+                }
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,104 @@
+
+@include media-md{
+    .nav-bar{
+        background:transparent;
+        visibility: visible;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+        ul{
+            display: inline-flex;
+        }
+    }
+    .hamburger-btn{
+        display: none;
+    }
+    [data-aos='scroll-animation']{
+        background:transparent;
+        z-index: 1;
+        transition-property: background;
+        &.aos-animate{
+            background-color: navy;
+        }
+    }
+    .landing-page{
+        .content{
+            width:60%;
+            .content-title{
+                #title{
+                    font-size: 2.0rem;
+                }
+                #subtitle{
+                    font-size: 1.2rem;
+                }
+            }
+            .search-for-services{
+                display: inline-flex;
+                .search-btn{
+                    margin: 0 0 0 .2rem;
+                    width:auto;
+                    color: white;
+                }
+                
+            }
+        }  
+    }
+    .categories-section{
+        .section-title{
+            h3{
+                font-size: 1.75rem;
+            }
+            .underline{
+                width:25%
+            }
+        }
+        .categories-container{
+            .categories{
+                width:90%;
+            }
+        }
+    }
+    .services-container{
+        .services{
+            .specific-service{
+                flex-basis: 80%;
+            }
+        } 
+    }
+    .basic-info{
+        display: flex;
+        width:70%;
+        margin: 0 auto;
+        .thumbnail-container, .details{
+            width:100%
+        }
+        .thumbnail-container{
+            img{
+                float: right;
+                margin-right: 3rem;
+            }
+        }
+    }
+    .packages{
+        width:80%;
+        margin: 0 auto;
+    }
+    .master-container{
+        display: flex;
+        .report-form-container, .comment-form-container{
+            width:100%;
+        }
+        .report-form-container{
+            margin-right: 1rem;
+        }
+    }
+}
+@include media-lg{
+    .services-container{
+        .services{
+            .specific-service{
+                flex-basis: 20%;
+            }
+        } 
+    }
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    RentalYard-All services under one roof.
+{% endblock title %}
+
+{% block body %}
+    <div class="landing-page">
+        <div class="content">
+            <div class="content-title">
+                <p id="title">Welcome to RentMeYard.</p>
+                <p id="subtitle">The home for all your services needs.</p>
+            </div>
+            <form action="{% url 'searchForServices' %}" method="POST">
+                {% csrf_token %}
+                <div class="search-for-services form-group">
+                    <input type="text" class="form-control" name="service" placeholder="Need any service, search for it">
+                    <div class="search-btn">
+                      <button class="btn">Search</button>  
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <section class="categories-section">
+        <div class="section-title">
+            <h3>Available Service Sectors</h3>
+            <div class="underline"></div>
+        </div>
+        <div class="categories-container owl-carousel owl-theme">
+            {% for category in categories %}
+            <div class="categories">
+                <p>{{category.name}}</p>
+                <div class="view-service-btn d-flex justify-content-center align-items-center">
+                    <a href="{% url 'filterByCategory' category.id %}">View services</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock body %}

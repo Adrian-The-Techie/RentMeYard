@@ -1,0 +1,447 @@
+.nav-bar, .hamburger-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: .5rem;
+}
+
+.nav-bar {
+  background-color: navy;
+  width: 100%;
+  height: 0;
+  visibility: hidden;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.nav-bar.open {
+  height: 40%;
+  visibility: visible;
+}
+
+.nav-bar ul {
+  list-style-type: none;
+}
+
+.nav-bar ul li {
+  margin: auto 0;
+  padding: .5rem;
+}
+
+.nav-bar ul li a {
+  text-decoration: none;
+  color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.nav-bar ul li a:hover {
+  color: #ff9900;
+}
+
+.nav-bar ul li .post-service-btn {
+  background: #ff9900;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-bar ul li .post-service-btn:hover {
+  color: white;
+}
+
+.landing-page {
+  height: 80vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(116, 112, 112, 0.6))), url("../images/pexels-cowomen-2041629.jpg") center/cover no-repeat fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(116, 112, 112, 0.6)), url("../images/pexels-cowomen-2041629.jpg") center/cover no-repeat fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landing-page .content {
+  width: 95%;
+}
+
+.landing-page .content .content-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.landing-page .content .content-title #title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.landing-page .content .content-title #subtitle {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.landing-page .content .search-for-services {
+  width: 100%;
+}
+
+.landing-page .content .search-for-services .search-btn {
+  margin-top: .5rem;
+}
+
+.landing-page .content .search-for-services .search-btn button {
+  background: #ff9900;
+  color: white;
+  width: 100%;
+}
+
+.categories-section {
+  min-height: 50vh;
+}
+
+.categories-section .section-title {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.categories-section .section-title h3 {
+  font-size: 1.5rem;
+}
+
+.categories-section .section-title .underline {
+  height: 2px;
+  background-color: black;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.categories-section .categories-container {
+  z-index: 0;
+}
+
+.categories-section .categories-container .categories {
+  width: 70%;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem auto;
+  background-color: grey;
+}
+
+.categories-section .categories-container .categories p {
+  color: #f0e6e6;
+  font-size: 18px;
+}
+
+.categories-section .categories-container .categories .view-service-btn {
+  position: absolute;
+  bottom: 20%;
+  width: 50%;
+  height: 30px;
+  background: #ff9900;
+  border-radius: 20px;
+}
+
+.categories-section .categories-container .categories .view-service-btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.services-container .services-title {
+  height: 30vh;
+  background: grey;
+}
+
+.services-container .services {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.services-container .services .specific-service {
+  -ms-flex-preferred-size: 90%;
+      flex-basis: 90%;
+}
+
+.services-container .services .specific-service .thumbnail-container {
+  width: 90%;
+  height: 170px;
+  margin: 0 auto;
+}
+
+.services-container .services .specific-service .thumbnail-container img {
+  margin: 0 auto;
+  max-width: 100%;
+  height: 100%;
+}
+
+.services-container .services .specific-service .details .specific-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.services-container .services .specific-service .details .specific-detail #title {
+  font-weight: 600;
+}
+
+.services-container .services .specific-service .details .specific-detail #category-detail {
+  margin-top: .2rem;
+  height: 20px;
+}
+
+.services-container .services .specific-service .details .specific-detail #category-detail p {
+  font-style: italic;
+}
+
+.services-container .services .specific-service .details .specific-detail .service-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.services-container .services .specific-service .details .specific-detail .service-detail p {
+  font-style: italic;
+}
+
+.services-container .services .specific-service .details .specific-detail .service-detail #packages-badge {
+  height: 20px;
+}
+
+.services-container .services .specific-service .action-btn {
+  background: #ff9900;
+}
+
+.services-container .services .specific-service .action-btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.specific-service-title {
+  height: 30vh;
+  background: grey;
+}
+
+.specific-service .messages ul li {
+  list-style-type: none;
+}
+
+.specific-service .thumbnail-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.specific-service .thumbnail-container img {
+  max-width: 100%;
+  height: 150px;
+}
+
+.specific-service .details .specific-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.specific-service .details .specific-detail #title {
+  font-weight: 600;
+}
+
+.specific-service .details .specific-detail #category-detail {
+  margin-top: .2rem;
+  height: 20px;
+}
+
+.specific-service .details .specific-detail #category-detail p {
+  font-style: italic;
+}
+
+.specific-service .details .specific-detail .service-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.specific-service .details .specific-detail .service-detail p {
+  font-style: italic;
+}
+
+.specific-service .details .specific-detail .service-detail #packages-badge {
+  height: 20px;
+}
+
+.specific-service .other-services {
+  z-index: 0;
+}
+
+.specific-service .other-services .other-service {
+  width: 70%;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem auto;
+  background-color: grey;
+}
+
+.specific-service .other-services .other-service p {
+  color: #f0e6e6;
+  font-size: 18px;
+}
+
+.specific-service .other-services .other-service .view-service-btn {
+  position: absolute;
+  bottom: 20%;
+  width: 50%;
+  height: 30px;
+  background: #ff9900;
+  border-radius: 20px;
+}
+
+.specific-service .other-services .other-service .view-service-btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.specific-service .master-container .report-form-container, .specific-service .master-container .comment-form-container {
+  background: grey;
+}
+
+.specific-service .master-container .report-form-container .report-form-title p, .specific-service .master-container .comment-form-container .report-form-title p {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.specific-service .master-container .report-form-container .report-form form .btn, .specific-service .master-container .comment-form-container .report-form form .btn {
+  background-color: #ff9900 !important;
+}
+
+@media screen and (min-width: 600px) {
+  .nav-bar {
+    background: transparent;
+    visibility: visible;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .nav-bar ul {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+  .hamburger-btn {
+    display: none;
+  }
+  [data-aos='scroll-animation'] {
+    background: transparent;
+    z-index: 1;
+    -webkit-transition-property: background;
+    transition-property: background;
+  }
+  [data-aos='scroll-animation'].aos-animate {
+    background-color: navy;
+  }
+  .landing-page .content {
+    width: 60%;
+  }
+  .landing-page .content .content-title #title {
+    font-size: 2.0rem;
+  }
+  .landing-page .content .content-title #subtitle {
+    font-size: 1.2rem;
+  }
+  .landing-page .content .search-for-services {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+  .landing-page .content .search-for-services .search-btn {
+    margin: 0 0 0 .2rem;
+    width: auto;
+    color: white;
+  }
+  .categories-section .section-title h3 {
+    font-size: 1.75rem;
+  }
+  .categories-section .section-title .underline {
+    width: 25%;
+  }
+  .categories-section .categories-container .categories {
+    width: 90%;
+  }
+  .services-container .services .specific-service {
+    -ms-flex-preferred-size: 80%;
+        flex-basis: 80%;
+  }
+  .basic-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .basic-info .thumbnail-container, .basic-info .details {
+    width: 100%;
+  }
+  .basic-info .thumbnail-container img {
+    float: right;
+    margin-right: 3rem;
+  }
+  .packages {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .master-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .master-container .report-form-container, .master-container .comment-form-container {
+    width: 100%;
+  }
+  .master-container .report-form-container {
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .services-container .services .specific-service {
+    -ms-flex-preferred-size: 20%;
+        flex-basis: 20%;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

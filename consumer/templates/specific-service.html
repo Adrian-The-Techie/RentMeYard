@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} RentMeYard | {{service.name}} {% endblock title %}
+
+{% block body %}
+    <div class="specific-service-title d-flex justify-content-center align-items-center text-white">
+        <h3>{{service.name}}</h3>
+    </div>
+    <div class="specific-service m-3">
+        {% if messages %}
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="basic-info">
+            <div class="thumbnail-container">
+                <img src="{% static 'images/uploads/thumbnail.png' %}" alt="">
+            </div>
+            <div class="details mt-2">
+                <div class="basic-info ml-3">
+                    <h4>Basic Info</h4>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">Product name: </p>
+                    <p id="detail">{{service.name}}</p>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">Category: </p>
+                    <div class="badge badge-secondary" id="category-detail"><p id="detail">{{service.category.name}}</p></div>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">Rates: </p>
+                    <div class="service-detail">
+                    <p id="detail">{{service.normal_rate}}</p>
+                    {% if service.has_packages %}
+                            <div class="badge badge-primary ml-1" id="packages-badge"><p>has packages</p></div>
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">Negotiable: </p>
+                    <p id="detail">
+                        {% if services.negotiable %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">By: </p>
+                    <p id="detail">{{service.user}}</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        {% if packages != None %}
+            <div class="packages">
+                <div class="packages-title text-center">
+                    <h3>My packages</h3>
+                </div>
+                <div class="table">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Rate</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for package in packages%}
+                                <tr>
+                                    <td>{{package.condition}}</td>
+                                    <td>{{package.rate}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div> 
+            </div>
+        {% endif %}
+        {% if otherServices != None%}
+            <div class="other-services-container">
+                <div class="other-services-title text-center">
+                    <h3>More services by {{service.user}}</h3>
+                </div>
+                <div class="other-services owl-carousel owl-theme">
+                        {% for otherService in otherServices %}
+                        <div class="other-service">
+                            <p>{{otherService.name}}</p>
+                            <div class="view-service-btn d-flex justify-content-center align-items-center">
+                                <a href="{% url 'specificService' otherService.url %}">View service</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <!-- Report -->
+        <div class="master-container">
+            <div class="report-form-container">
+                <div class="report-form-title text-center">
+                    <p>Scam product? Please report via the form below</p>
+                </div>
+                <div class="report-form form-group">
+                    <form action="{% url 'report' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" class="form-control mb-2"  name="url" value="{{service.url}}">
+                        <input type="email" class="form-control mb-2" name="email" placeholder="Enter email">
+                        <textarea name="details" id="" cols="30" rows="10" class="form-control" placeholder="Please describe your issue. "></textarea>
+                        <button class="btn btn-block">Report</button>
+                    </form>
+                </div>
+            </div>
+            <div class="comment-form-container">
+                <div class="comment-form-title text-center">
+                    <p>What is your opinion on this service</p>
+                </div>
+                <div class="comment-form form-group">
+                    <form action="{% url 'comment' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="url" value="{{service.url}}">
+                        <input type="email" class="form-control mb-2" name="email" placeholder="Please provide your email">
+                        <textarea name="comment" class="form-control mb-2" id="" cols="30" rows="10" placeholder="Please give your comment on this product"></textarea>
+                        <button class="btn btn-block">Submit comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock body %}

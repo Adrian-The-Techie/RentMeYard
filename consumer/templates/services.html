@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}RentMeYard | Services {% endblock title %}
+
+{% block body %}
+<div class="services-container">
+    <div class="services-title d-flex justify-content-center align-items-center text-white">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="services">
+        {% for service in services %}
+        <div class="specific-service m-3">
+            <div class="thumbnail-container">
+                <img src="{% static 'images/uploads/thumbnail.png' %}" alt="">
+            </div>
+            <div class="details">
+                <div class="specific-detail">
+                    <p id="title">Product name: </p>
+                    <p id="detail">{{service.name}}</p>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">Category: </p>
+                    <div class="badge badge-secondary" id="category-detail"><p id="detail">{{service.category}}</p></div>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">Rates: </p>
+                    <div class="service-detail">
+                       <p id="detail">{{service.normal_rate}}</p>
+                       {% if service.has_packages %}
+                            <div class="badge badge-primary ml-1" id="packages-badge"><p>has packages</p></div>
+                       {% endif %}
+                    </div>
+                </div>
+                <div class="specific-detail">
+                    <p id="title">By: </p>
+                    <p id="detail">{{service.user}}</p>
+                </div>
+            </div>
+            <div class="action-btn">
+                <a href="{% url 'specificService' service.url %}" class="btn btn-block">View details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
