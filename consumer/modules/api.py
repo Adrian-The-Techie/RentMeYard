@@ -35,18 +35,18 @@ class API:
 
         if self.data['activityID'] == 'addService':
             try:
-                # categoryInstance=Category.objects.get(id=self.data['category'])
-                # userInstance=Users.objects.get(token=self.data['user'])
-                # serviceInstance= Services(thumbnail=self.data['thumbnail'],name=self.data['name'],normal_rate=self.data['normalRate'],description=self.data['description'],negotiable=bool(self.data['negotiable']),has_packages=bool(self.data['hasPackages']),url=genUrl(), category=categoryInstance,user=userInstance)
-                # serviceInstance.save()
-                # print(serviceInstance.negotiable)
-                # print(serviceInstance.has_packages)
+                categoryInstance=Category.objects.get(id=self.data['category'])
+                userInstance=Users.objects.get(token=self.data['user'])
+                serviceInstance= Services(thumbnail=self.data['thumbnail'],name=self.data['name'],normal_rate=self.data['normalRate'],description=self.data['description'],negotiable=bool(self.data['negotiable']),has_packages=bool(self.data['hasPackages']),url=genUrl(), category=categoryInstance,user=userInstance)
+                serviceInstance.save()
+                print(serviceInstance.negotiable)
+                print(serviceInstance.has_packages)
 
-                # if bool(self.data['hasPackages']):
+                if bool(self.data['hasPackages']):
                 for package in self.data['packages']:
-                    print(package['name'])
-                    # packageInstance=Packages(condition=package['name'], rate=package['rate'],service=serviceInstance)
-                    # packageInstance.save()
+                    # print(package['name'])
+                    packageInstance=Packages(condition=package['name'], rate=package['rate'],service=serviceInstance)
+                    packageInstance.save()
                     
                 responseData={
                     'status':1,
