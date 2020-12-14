@@ -43,10 +43,10 @@ class API:
                 print(serviceInstance.has_packages)
 
                 if bool(self.data['hasPackages']):
-                for package in self.data['packages']:
-                    # print(package['name'])
-                    packageInstance=Packages(condition=package['name'], rate=package['rate'],service=serviceInstance)
-                    packageInstance.save()
+                    for package in self.data['packages']:
+                        # print(package['name'])
+                        packageInstance=Packages(condition=package['name'], rate=package['rate'],service=serviceInstance)
+                        packageInstance.save()
                     
                 responseData={
                     'status':1,
