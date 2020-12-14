@@ -13,7 +13,8 @@ from .modules.api_general import determineHost
 def index(request):
     context={
         "host":determineHost(),
-        "categories":Category.objects.values("id","thumbnail","name")
+        "all_categories":Category.objects.values("id","name"),
+        "some_categories": Category.objects.values("id","thumbnail","name")[:8]
     }
     return render(request,"index.html", context=context)
 

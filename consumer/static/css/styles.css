@@ -111,8 +111,8 @@ footer .copyright {
 
 .landing-page {
   height: 80vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(116, 112, 112, 0.6))), url("../images/pexels-cowomen-2041629.jpg") center/cover no-repeat fixed;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(116, 112, 112, 0.6)), url("../images/pexels-cowomen-2041629.jpg") center/cover no-repeat fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(116, 112, 112, 0.6))), url("../images/landing-image.jpg") center/cover no-repeat fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(116, 112, 112, 0.6)), url("../images/landing-image.jpg") center/cover no-repeat fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

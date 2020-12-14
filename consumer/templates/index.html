@@ -18,7 +18,7 @@
                 <div class="search-for-services form-group">
                     <input type="text" class="form-control" id ="searchText" name="service" placeholder="Need any service, search for it">
                     <select name="category" class="form-control">
-                        {% for category in categories %}
+                        {% for category in all_categories %}
                             <option value="{{ category.id }}">{{category.name}}</option>
                         {% endfor %}
                     </select>
@@ -44,7 +44,7 @@
             <div class="underline"></div>
         </div>
         <div class="categories-container-mobile owl-carousel owl-theme">
-            {% for category in categories %}
+            {% for category in some_categories %}
             <div class="categories-mobile" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(116, 112, 112, 0.6)), url('{{host}}/media/{{category.thumbnail}}') center/cover no-repeat fixed;">
                 <p>{{category.name}}</p>
                 <div class="view-service-btn d-flex justify-content-center align-items-center">
@@ -54,7 +54,7 @@
             {% endfor %}
         </div>
         <div class="categories-container-lg">
-            {% for category in categories %}
+            {% for category in some_categories %}
             <div class="categories" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(116, 112, 112, 0.6)), url('{{host}}/media/{{category.thumbnail}}') center/cover no-repeat fixed;">
                 <p>{{category.name}}</p>
                 <div class="view-service-btn d-flex justify-content-center align-items-center">
