@@ -1,5 +1,6 @@
 from consumer.models import Category
 from django.utils import timezone
+from consumer.modules.api_general import determineHost
 class API:
 
     def __init__(self, data):
@@ -9,13 +10,13 @@ class API:
         responseData={}
         if self.data["activityID"] == "addCategory":
             try:
-                for category in self.data["requestData"]['categories']:
-                    categoryInstance=Category(thumbnail=category['thumbnail'], name=category['name'])
-                    categoryInstance.save()
+                # for category in self.data['categories']:
+                categoryInstance=Category(thumbnail=self.data['thumbnail'], name=self.data['name'])
+                categoryInstance.save()
 
                 responseData={
                     "status":1,
-                    "message":"Categories added successfully"
+                    "message":"Category added successfully"
                 }
             except Exception as e:
                 responseData={
@@ -24,15 +25,18 @@ class API:
                 }
         if self.data["activityID"] == "getCategories":
             try:
-                categories=Category.objects.filter(visibility=1).values("id","thumbnail","name")
+                categories=Category.objects.filter(visibility=1).values("id","thumbnail","name", "url").order_by("name")
+                for category in categories:   
+                    category['thumbnail']='{}/media/{}'.format(determineHost(), category['thumbnail'])
+
                 responseData={
                     "status":1,
                     "data":categories
                 }
-            except:
+            except Exception as e:
                 responseData={
                     "status":0,
-                    "message":"Error retrieving categories. Please try again later"
+                    "message":"Error retrieving categories. Please try again later {}".format(e)
                 }
 
         if self.data["activityID"] == "updateCategory":

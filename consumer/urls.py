@@ -9,5 +9,6 @@ urlpatterns=[
     path('comment', views.comment, name="comment"),
     path('categories/<int:id>', views.filterByCategory, name="filterByCategory"),
     path('searchForServices', views.searchForServices, name="searchForServices"),
+    path('subscribe', views.subscribe, name="subscribe"),
     path('api/', views.api, name='api')
 ]

@@ -5,7 +5,7 @@
     margin-right:.5rem;
 }
 .nav-bar{
-    background-color: navy;
+    background-color: map-get($themeColors, 'navy-blue');
     width: 100%;
     height: 0;
     visibility: hidden;
@@ -31,6 +31,8 @@
                 background: $btnBgColor;
                 text-decoration: none;
                 color: white;
+                border-radius:20px;
+                width: 100%;
             }
             .post-service-btn:hover{
                 color: white;
@@ -38,4 +40,51 @@
             
         }
     } 
+}
+footer{
+    background-color: rgb(58, 61, 61);
+    text-align: center;
+    color: white;
+    .content{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            color:map-get($map: $themeColors, $key: 'orange');
+        }
+        .nav, .social-media{
+            display:block;
+            text-align:left;
+            margin: 0 auto;
+            ul{
+                list-style-type: none;
+                padding:0px;
+                li{
+                    padding-bottom: .4rem;
+                }
+            }
+            p{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .underline{
+                height: 2px;
+                width: 50%;
+                background-color: white;
+                margin: 0 auto;
+            }
+        }
+        .company{
+            #name{
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+    }
+    .copyright{
+        margin-top: 10rem;
+    }
 }

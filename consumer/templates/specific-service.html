@@ -20,7 +20,7 @@
         {% endif %}
         <div class="basic-info">
             <div class="thumbnail-container">
-                <img src="{% static 'images/uploads/thumbnail.png' %}" alt="">
+                <img src="{{host}}/media/{{service.thumbnail}}" alt="">
             </div>
             <div class="details mt-2">
                 <div class="basic-info ml-3">
@@ -90,38 +90,63 @@
                 <div class="other-services-title text-center">
                     <h3>More services by {{service.user}}</h3>
                 </div>
-                <div class="other-services owl-carousel owl-theme">
+                <div class="services owl-carousel owl-theme">
                         {% for otherService in otherServices %}
-                        <div class="other-service">
-                            <p>{{otherService.name}}</p>
-                            <div class="view-service-btn d-flex justify-content-center align-items-center">
-                                <a href="{% url 'specificService' otherService.url %}">View service</a>
+                            <div class="specific-service m-3 p-2">
+                                <div class="thumbnail-container">
+                                    <img src="{{host}}/media/{{otherService.thumbnail}}" alt="">
+                                </div>
+                                <div class="details">
+                                    <div class="specific-detail">
+                                        <p id="title">Name: </p>
+                                        <p id="detail">{{otherService.name}}</p>
+                                    </div>
+                                    <div class="specific-detail">
+                                        <p id="title">Category: </p>
+                                        <div class="badge badge-secondary" id="category-detail"><p id="detail">{{service.category}}</p></div>
+                                    </div>
+                                    <div class="specific-detail">
+                                        <p id="title">Rates: </p>
+                                        <div class="service-detail">
+                                           <p id="detail">{{otherService.normal_rate}}</p>
+                                           {% if otherService.has_packages %}
+                                                <div class="badge badge-primary ml-1" id="packages-badge"><p>has packages</p></div>
+                                           {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="specific-detail">
+                                        <p id="title">By: </p>
+                                        <p id="detail">{{otherService.user}}</p>
+                                    </div>
+                                </div>
+                                <div class="action-btn">
+                                    <a href="{% url 'specificService' otherService.url %}" class="btn btn-block">View details</a>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
         {% endif %}
         <!-- Report -->
-        <div class="master-container">
+        <div class="master-container m-2">
             <div class="report-form-container">
                 <div class="report-form-title text-center">
-                    <p>Scam product? Please report via the form below</p>
+                    <p style="font-size: 25px; font-weight: 600;">Scam product? Please report via the form below</p>
                 </div>
                 <div class="report-form form-group">
                     <form action="{% url 'report' %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" class="form-control mb-2"  name="url" value="{{service.url}}">
                         <input type="email" class="form-control mb-2" name="email" placeholder="Enter email">
-                        <textarea name="details" id="" cols="30" rows="10" class="form-control" placeholder="Please describe your issue. "></textarea>
-                        <button class="btn btn-block">Report</button>
+                        <textarea name="details" id="" cols="30" rows="10" class="form-control mb-2" placeholder="Please describe your issue. "></textarea>
+                        <button class="btn btn-block mb-3" style="background-color:rgb(255, 153, 0)!important;">Report</button>
                     </form>
                 </div>
             </div>
             <div class="comment-form-container">
                 <div class="comment-form-title text-center">
-                    <p>What is your opinion on this service</p>
+                    <p style="font-size: 25px; font-weight: 600;">What is your opinion on this service</p>
                 </div>
                 <div class="comment-form form-group">
                     <form action="{% url 'comment' %}" method="POST">
@@ -129,7 +154,7 @@
                         <input type="hidden" name="url" value="{{service.url}}">
                         <input type="email" class="form-control mb-2" name="email" placeholder="Please provide your email">
                         <textarea name="comment" class="form-control mb-2" id="" cols="30" rows="10" placeholder="Please give your comment on this product"></textarea>
-                        <button class="btn btn-block">Submit comment</button>
+                        <button class="btn btn-block" style="background-color:rgb(255, 153, 0)!important;">Submit comment</button>
                     </form>
                 </div>
             </div>

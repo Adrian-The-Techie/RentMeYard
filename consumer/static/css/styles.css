@@ -6,7 +6,7 @@
 }
 
 .nav-bar {
-  background-color: navy;
+  background-color: #304E6B;
   width: 100%;
   height: 0;
   visibility: hidden;
@@ -43,10 +43,70 @@
   background: #ff9900;
   text-decoration: none;
   color: white;
+  border-radius: 20px;
+  width: 100%;
 }
 
 .nav-bar ul li .post-service-btn:hover {
   color: white;
+}
+
+footer {
+  background-color: #3a3d3d;
+  text-align: center;
+  color: white;
+}
+
+footer .content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+footer .content a {
+  text-decoration: none;
+  color: white;
+}
+
+footer .content a:hover {
+  color: #ff9900;
+}
+
+footer .content .nav, footer .content .social-media {
+  display: block;
+  text-align: left;
+  margin: 0 auto;
+}
+
+footer .content .nav ul, footer .content .social-media ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+footer .content .nav ul li, footer .content .social-media ul li {
+  padding-bottom: .4rem;
+}
+
+footer .content .nav p, footer .content .social-media p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer .content .nav .underline, footer .content .social-media .underline {
+  height: 2px;
+  width: 50%;
+  background-color: white;
+  margin: 0 auto;
+}
+
+footer .content .company #name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+footer .copyright {
+  margin-top: 10rem;
 }
 
 .landing-page {
@@ -76,7 +136,7 @@
 
 .landing-page .content .content-title #title {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .landing-page .content .content-title #subtitle {
@@ -86,6 +146,10 @@
 
 .landing-page .content .search-for-services {
   width: 100%;
+}
+
+.landing-page .content .search-for-services #searchText {
+  margin: 0 0 .5rem 0;
 }
 
 .landing-page .content .search-for-services .search-btn {
@@ -110,6 +174,7 @@
 
 .categories-section .section-title h3 {
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .categories-section .section-title .underline {
@@ -119,11 +184,11 @@
   width: 70%;
 }
 
-.categories-section .categories-container {
+.categories-section .categories-container-mobile {
   z-index: 0;
 }
 
-.categories-section .categories-container .categories {
+.categories-section .categories-container-mobile .categories-mobile {
   width: 70%;
   height: 150px;
   display: -webkit-box;
@@ -140,26 +205,119 @@
       -ms-flex-align: center;
           align-items: center;
   margin: 1rem auto;
-  background-color: grey;
 }
 
-.categories-section .categories-container .categories p {
+.categories-section .categories-container-mobile .categories-mobile p {
   color: #f0e6e6;
   font-size: 18px;
 }
 
-.categories-section .categories-container .categories .view-service-btn {
-  position: absolute;
+.categories-section .categories-container-mobile .categories-mobile .view-service-btn {
   bottom: 20%;
-  width: 50%;
+  width: 80%;
   height: 30px;
   background: #ff9900;
   border-radius: 20px;
 }
 
-.categories-section .categories-container .categories .view-service-btn a {
+.categories-section .categories-container-mobile .categories-mobile .view-service-btn a {
   text-decoration: none;
   color: white;
+}
+
+.categories-section .categories-container-lg {
+  display: none;
+  z-index: 0;
+}
+
+.categories-section .categories-container-lg .categories {
+  width: 70%;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem auto;
+}
+
+.categories-section .categories-container-lg .categories p {
+  color: #f0e6e6;
+  font-size: 18px;
+}
+
+.categories-section .categories-container-lg .categories .view-service-btn {
+  bottom: 20%;
+  width: 70%;
+  height: 30px;
+  background: #ff9900;
+  border-radius: 20px;
+}
+
+.categories-section .categories-container-lg .categories .view-service-btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.why-choose-us {
+  height: 35vh;
+  background-color: aquamarine;
+}
+
+.subscribe {
+  height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.subscribe p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.subscribe .subscribe-form {
+  width: 90%;
+}
+
+.subscribe .subscribe-form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.subscribe .subscribe-form form .sign-up {
+  width: 30%;
+  background-color: #304E6B;
+  color: white;
+  -webkit-transition: color .5s;
+  transition: color .5s;
+}
+
+.subscribe .subscribe-form form .sign-up:hover {
+  color: #ff9900;
+}
+
+.messages ul li {
+  list-style-type: none;
 }
 
 .services-container .services-title {
@@ -182,12 +340,15 @@
 .services-container .services .specific-service {
   -ms-flex-preferred-size: 90%;
       flex-basis: 90%;
+  background-color: lightgray;
+  border-radius: 20px;
 }
 
 .services-container .services .specific-service .thumbnail-container {
   width: 90%;
   height: 170px;
   margin: 0 auto;
+  border-radius: 50%;
 }
 
 .services-container .services .specific-service .thumbnail-container img {
@@ -231,11 +392,17 @@
 
 .services-container .services .specific-service .action-btn {
   background: #ff9900;
+  border-radius: 100px;
 }
 
 .services-container .services .specific-service .action-btn a {
   text-decoration: none;
   color: white;
+}
+
+.services-container .no-result {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .specific-service-title {
@@ -290,45 +457,82 @@
   height: 20px;
 }
 
-.specific-service .other-services {
+.specific-service .other-services-container {
   z-index: 0;
 }
 
-.specific-service .other-services .other-service {
-  width: 70%;
-  height: 150px;
+.specific-service .other-services-container .services {
+  z-index: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 1rem auto;
-  background-color: grey;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
-.specific-service .other-services .other-service p {
-  color: #f0e6e6;
-  font-size: 18px;
-}
-
-.specific-service .other-services .other-service .view-service-btn {
-  position: absolute;
-  bottom: 20%;
-  width: 50%;
-  height: 30px;
-  background: #ff9900;
+.specific-service .other-services-container .services .specific-service {
+  -ms-flex-preferred-size: 90%;
+      flex-basis: 90%;
+  background-color: lightgray;
   border-radius: 20px;
 }
 
-.specific-service .other-services .other-service .view-service-btn a {
+.specific-service .other-services-container .services .specific-service .thumbnail-container {
+  width: 90%;
+  height: 170px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.specific-service .other-services-container .services .specific-service .thumbnail-container img {
+  margin: 0 auto;
+  max-width: 100%;
+  height: 100%;
+}
+
+.specific-service .other-services-container .services .specific-service .details .specific-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.specific-service .other-services-container .services .specific-service .details .specific-detail #title {
+  font-weight: 600;
+}
+
+.specific-service .other-services-container .services .specific-service .details .specific-detail #category-detail {
+  margin-top: .2rem;
+  height: 20px;
+}
+
+.specific-service .other-services-container .services .specific-service .details .specific-detail #category-detail p {
+  font-style: italic;
+}
+
+.specific-service .other-services-container .services .specific-service .details .specific-detail .service-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.specific-service .other-services-container .services .specific-service .details .specific-detail .service-detail p {
+  font-style: italic;
+}
+
+.specific-service .other-services-container .services .specific-service .details .specific-detail .service-detail #packages-badge {
+  height: 20px;
+}
+
+.specific-service .other-services-container .services .specific-service .action-btn {
+  background: #ff9900;
+  border-radius: 100px;
+}
+
+.specific-service .other-services-container .services .specific-service .action-btn a {
   text-decoration: none;
   color: white;
 }
@@ -342,7 +546,7 @@
   font-weight: 600;
 }
 
-.specific-service .master-container .report-form-container .report-form form .btn, .specific-service .master-container .comment-form-container .report-form form .btn {
+.specific-service .master-container .report-form-container .report-form .btn, .specific-service .master-container .comment-form-container .report-form .btn {
   background-color: #ff9900 !important;
 }
 
@@ -373,7 +577,7 @@
     transition-property: background;
   }
   [data-aos='scroll-animation'].aos-animate {
-    background-color: navy;
+    background-color: #304E6B;
   }
   .landing-page .content {
     width: 60%;
@@ -389,6 +593,9 @@
     display: -ms-inline-flexbox;
     display: inline-flex;
   }
+  .landing-page .content .search-for-services #searchText {
+    margin: 0 .5rem 0 0;
+  }
   .landing-page .content .search-for-services .search-btn {
     margin: 0 0 0 .2rem;
     width: auto;
@@ -400,8 +607,33 @@
   .categories-section .section-title .underline {
     width: 25%;
   }
-  .categories-section .categories-container .categories {
-    width: 90%;
+  .categories-section .categories-container-mobile {
+    display: none;
+  }
+  .categories-section .categories-container-lg {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .categories-section .categories-container-lg .categories {
+    -ms-flex-preferred-size: 20%;
+        flex-basis: 20%;
+    margin: 1rem;
+  }
+  .subscribe .subscribe-form {
+    width: 65%;
+  }
+  .subscribe .subscribe-form form .sign-up {
+    width: 20%;
   }
   .services-container .services .specific-service {
     -ms-flex-preferred-size: 80%;
@@ -439,9 +671,13 @@
 }
 
 @media screen and (min-width: 900px) {
-  .services-container .services .specific-service {
+  .services-container .services .specific-service, .specific-service .other-services-container .services .specific-service {
     -ms-flex-preferred-size: 20%;
         flex-basis: 20%;
   }
+}
+
+html, body {
+  font-family: 'Tajawal', sans-serif;
 }
 /*# sourceMappingURL=styles.css.map */

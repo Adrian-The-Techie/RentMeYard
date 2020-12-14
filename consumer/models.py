@@ -1,11 +1,12 @@
-import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from .modules.api_general import genUrl
 
 # Create your models here.
 class Category(models.Model):
     name=models.CharField(max_length=255)
-    thumbnail=models.ImageField(upload_to='uploads/', default='uploads/thumbnail.png')
+    thumbnail=models.ImageField(upload_to='uploads/categories/', default='uploads/thumbnail.png')
+    url=models.CharField(max_length=255, default=genUrl())
     date_added=models.DateTimeField(auto_now_add=True)
     date_updated=models.DateTimeField(null=True)
     visibility=models.BooleanField(default=1)
@@ -66,3 +67,8 @@ class LoginHistory(models.Model):
     current_status=models.BooleanField(default=1)
     time_logged_in=models.DateTimeField(auto_now_add=True)
     time_logged_out=models.DateTimeField(null=True)
+
+class Subscribers(models.Model):
+    email=models.CharField(max_length=255)
+    url=models.CharField(max_length=255, default=genUrl())
+    date_added=models.DateTimeField(auto_now_add=True)

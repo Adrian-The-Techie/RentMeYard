@@ -1,17 +1,19 @@
 from django.shortcuts import render
-from .models import Category, Services, Users, Packages, Reports, Comments
+from .models import Category, Services, Users, Packages, Reports, Comments, Subscribers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .modules.api import API
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
+from .modules.api_general import determineHost
 
 # Create your views here.
 
 def index(request):
     context={
-        "categories":Category.objects.values("id","name")
+        "host":determineHost(),
+        "categories":Category.objects.values("id","thumbnail","name")
     }
     return render(request,"index.html", context=context)
 
@@ -23,6 +25,7 @@ def services(request):
         service['user']=userInstance.full_names
         service['category']=categoryInstance.name
     context={
+        'host':determineHost(),
         'title':'All services',
         'services': services
     }
@@ -31,6 +34,7 @@ def services(request):
 def specificService(request, url):
     service=Services.objects.get(url=url)
     context={
+        'host':determineHost(),
         'service':service
     }
     if service.has_packages:
@@ -88,17 +92,29 @@ def filterByCategory(request, id):
 def searchForServices(request):
     context={}
     if request.POST:
-        services=Services.objects.filter(name__icontains=request.POST['service']).values('id', 'name','thumbnail','url','normal_rate', 'has_packages', 'category','user')
+        categoryInstance=Category.objects.get(id=request.POST['category'])
+        services=Services.objects.filter(name__icontains=request.POST['service'],category= categoryInstance).values('id', 'name','thumbnail','url','normal_rate', 'has_packages', 'category','user')
         for service in services:
             userInstance=Users.objects.get(id=service['user'])
             categoryInstance=Category.objects.get(id=service['category'])
             service['user']=userInstance.full_names
             service['category']=categoryInstance.name
 
-        context['title']="Search results for {}".format(request.POST['service'])
-        context['services']=services
+        context['title']="Search results for '{}'".format(request.POST['service'])
+        context['services']=services if len(services) > 0 else None
 
         return render(request, 'services.html', context=context)
+
+def subscribe(request):
+    try:
+        subscribeInstance=Subscribers(email=request.POST['email'])
+        subscribeInstance.save()
+
+        messages.success(request, "You have successfully subscribed to our newsletter. Thank you.")
+    except Exception as e:
+        messages.error(request, "Error subscribing. Please try again.")
+
+    return HttpResponseRedirect(reverse('index'))
 
 
 @api_view(['POST'])

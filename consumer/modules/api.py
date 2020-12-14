@@ -1,6 +1,7 @@
 from .auth.auth import Auth
 from ..models import Users, LoginHistory, Category, Services, Packages
 from .api_general import genUrl
+from django.core.files import File
 
 class API:
 
@@ -34,19 +35,22 @@ class API:
 
         if self.data['activityID'] == 'addService':
             try:
-                categoryInstance=Category.objects.get(id=self.data['requestData']['category'])
-                userInstance=Users.objects.get(token=self.data['requestData']['user'],)
-                serviceInstance= Services(thumbnail=self.data['requestData']['thumbnail'],name=self.data['requestData']['name'],normal_rate=self.data['requestData']['normalRate'],description=self.data['requestData']['description'],negotiable=self.data['requestData']['negotiable'],has_packages=self.data['requestData']['hasPackages'],url=genUrl(), category=categoryInstance,user=userInstance)
-                serviceInstance.save()
+                # categoryInstance=Category.objects.get(id=self.data['category'])
+                # userInstance=Users.objects.get(token=self.data['user'])
+                # serviceInstance= Services(thumbnail=self.data['thumbnail'],name=self.data['name'],normal_rate=self.data['normalRate'],description=self.data['description'],negotiable=bool(self.data['negotiable']),has_packages=bool(self.data['hasPackages']),url=genUrl(), category=categoryInstance,user=userInstance)
+                # serviceInstance.save()
+                # print(serviceInstance.negotiable)
+                # print(serviceInstance.has_packages)
 
-                if self.data['requestData']['hasPackages']:
-                    for package in self.data['requestData']['packages']:
-                        packageInstance=Packages(condition=package['name'], rate=package['rate'],service=serviceInstance)
-                        packageInstance.save()
+                # if bool(self.data['hasPackages']):
+                for package in self.data['packages']:
+                    print(package['name'])
+                    # packageInstance=Packages(condition=package['name'], rate=package['rate'],service=serviceInstance)
+                    # packageInstance.save()
                     
                 responseData={
                     'status':1,
-                    'message':"Service added successfully."
+                    'message':self.data['packages']
                 }
             except Exception as e:
                 responseData={
@@ -80,6 +84,7 @@ class API:
                     'status':1,
                     'data':{
                         'id':service.id,
+                        'thumbnail':service.thumbnail.name,
                         'name':service.name,
                         'category':service.category.name,
                         'category_id':service.category.id,
@@ -98,21 +103,23 @@ class API:
 
         if self.data['activityID'] == 'updateService':
             try:
-                categoryInstance=Category.objects.get(id=self.data['requestData']['category'])
-                serviceInstance=Services.objects.get(id=self.data['requestData']['id'])
-                serviceInstance.name= self.data['requestData']['name']
-                serviceInstance.description= self.data['requestData']['description']
-                serviceInstance.negotiable= self.data['requestData']['negotiable']
-                serviceInstance.has_packages= self.data['requestData']['hasPackages']
+                categoryInstance=Category.objects.get(id=self.data['category'])
+                serviceInstance=Services.objects.get(id=self.data['id'])
+                serviceInstance.name= self.data['name']
+                serviceInstance.description= self.data['description']
+                serviceInstance.negotiable= bool(self.data['negotiable'])
+                serviceInstance.has_packages= bool(self.data['hasPackages'])
                 serviceInstance.category= categoryInstance
 
                 # update thumbnail
-                if self.data['requestData']['thumbnail'] != None:
-                    serviceInstance.thumbnail= self.data['requestData']['thumbnail']
+                if self.data['thumbnail'] != serviceInstance.thumbnail.name:
+                    serviceInstance.thumbnail= self.data['thumbnail']
+
+                serviceInstance.save()
                 
                 # handle packages
                 # delete packages
-                if len(self.data['requestData']['packages']) == 0:
+                if len(self.data['packages']) == 0:
                     packages=Packages.objects.filter(service=serviceInstance.id)
                     if len(packages) > 0:
                         for package in packages:
@@ -120,8 +127,8 @@ class API:
                             package.save()
 
                 # update existing packages
-                if len(self.data['requestData']['packages']) > 0:
-                    for package in self.data['requestData']['packages']:
+                if len(self.data['packages']) > 0:
+                    for package in self.data['packages']:
                         # Insert new packages
                         if package['id'] == '':
                             packageInstance=Packages(condition=package['name'], rate=package['rate'],service=serviceInstance)

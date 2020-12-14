@@ -16,7 +16,12 @@
             <form action="{% url 'searchForServices' %}" method="POST">
                 {% csrf_token %}
                 <div class="search-for-services form-group">
-                    <input type="text" class="form-control" name="service" placeholder="Need any service, search for it">
+                    <input type="text" class="form-control" id ="searchText" name="service" placeholder="Need any service, search for it">
+                    <select name="category" class="form-control">
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
                     <div class="search-btn">
                       <button class="btn">Search</button>  
                     </div>
@@ -24,20 +29,53 @@
             </form>
         </div>
     </div>
+    {% if messages %}
+        <div class="messages m-2">
+            <ul class="m-0">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
     <section class="categories-section">
         <div class="section-title">
             <h3>Available Service Sectors</h3>
             <div class="underline"></div>
         </div>
-        <div class="categories-container owl-carousel owl-theme">
+        <div class="categories-container-mobile owl-carousel owl-theme">
             {% for category in categories %}
-            <div class="categories">
+            <div class="categories-mobile" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(116, 112, 112, 0.6)), url('{{host}}/media/{{category.thumbnail}}') center/cover no-repeat fixed;">
                 <p>{{category.name}}</p>
                 <div class="view-service-btn d-flex justify-content-center align-items-center">
                     <a href="{% url 'filterByCategory' category.id %}">View services</a>
                 </div>
             </div>
             {% endfor %}
+        </div>
+        <div class="categories-container-lg">
+            {% for category in categories %}
+            <div class="categories" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(116, 112, 112, 0.6)), url('{{host}}/media/{{category.thumbnail}}') center/cover no-repeat fixed;">
+                <p>{{category.name}}</p>
+                <div class="view-service-btn d-flex justify-content-center align-items-center">
+                    <a href="{% url 'filterByCategory' category.id %}">View services</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </section>
+    <section class="why-choose-us">
+
+    </section>
+    <section class="subscribe">
+        <p>SUBSCRIBE TO OUR NEWSLETTERS</p>
+        <div class="subscribe-form form-group d-flex">
+            <form action="{% url 'subscribe' %}" method="POST" class="w-100">
+                {% csrf_token %}
+                <input type="text" class="form-control w-100" name="email" placeholder="Email address">
+                <button class="btn sign-up">SIGN UP</button>
+            </form>
         </div>
     </section>
 {% endblock body %}

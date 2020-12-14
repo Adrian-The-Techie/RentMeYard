@@ -10,14 +10,15 @@
         <h3>{{title}}</h3>
     </div>
     <div class="services">
+        {% if services != None %}
         {% for service in services %}
-        <div class="specific-service m-3">
+        <div class="specific-service m-3 p-2">
             <div class="thumbnail-container">
-                <img src="{% static 'images/uploads/thumbnail.png' %}" alt="">
+                <img src="{{host}}/media/{{service.thumbnail}}" alt="">
             </div>
             <div class="details">
                 <div class="specific-detail">
-                    <p id="title">Product name: </p>
+                    <p id="title">Name: </p>
                     <p id="detail">{{service.name}}</p>
                 </div>
                 <div class="specific-detail">
@@ -43,6 +44,11 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+            <div class="no-result p-5">
+                <p>Seems there is no result for your search. Please try again</p>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock body %}

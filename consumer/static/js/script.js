@@ -36,7 +36,7 @@ $('.owl-carousel').owlCarousel({
             items:3
         },
         1000:{
-            items:5
+            items:1
         }
     }
 })
@@ -44,3 +44,15 @@ $('.owl-carousel').owlCarousel({
 //initialise aos
 
 AOS.init();
+
+//update date
+var yearSpan= document.querySelector("#year");
+var currentYear= new Date().getFullYear();
+if(currentYear == 2020){
+    var yearTextNode=document.createTextNode("2020");
+    yearTextNode.appendChild(yearTextNode)
+}
+else{
+    var yearTextNode=document.createTextNode(`2020-${dateInstance.getFullYear}`);
+    yearTextNode.appendChild(yearTextNode);
+}

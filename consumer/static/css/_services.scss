@@ -9,10 +9,14 @@
         flex-flow:row wrap;
         .specific-service{
             flex-basis:90%;
+            background-color: lightgray;
+            border-radius: 20px;
             .thumbnail-container{
                 width:90%;
                 height:170px;
                 margin:0 auto;
+                border-radius:50%;
+                
                 img{
                     margin:0 auto;
                     max-width:100%;
@@ -45,11 +49,16 @@
             }
             .action-btn{
                 background:map-get($themeColors, 'orange');
+                border-radius: 100px;
                 a{
                     text-decoration:none;
                     color:white
                 }
             }
         }
+    }
+    .no-result{
+        font-size: 25px;
+        font-weight: bold;
     }
 }
