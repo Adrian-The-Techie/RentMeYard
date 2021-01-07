@@ -1,6 +1,7 @@
 from ...models import Users, LoginHistory
 from .tokens import genToken
 import datetime
+from django.utils import timezone
 from ..api_general import genUrl
 from django.contrib.auth import authenticate
 
@@ -67,3 +68,26 @@ class Auth:
                 'message':'{}'.format(e)
             }
         return response
+
+    # sign out
+    def signOut(self):
+        response=dict()
+        try:
+            loginHistoryInstance=LoginHistory.objects.get(id=int(self.data))
+            loginHistoryInstance.current_status=False
+            loginHistoryInstance.time_logged_out=timezone.now()
+            loginHistoryInstance.save()
+
+            response={
+                'status':1,
+                'message':'You have been signed out successfully. Come back anytime'
+            }
+
+        except Exception as e:
+            response={
+                'status':0,
+                'message':'Error signing you out. Please contact customer care for assistance'
+            }
+
+        return response
+
