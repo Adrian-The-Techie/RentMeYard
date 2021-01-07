@@ -167,7 +167,10 @@ class API:
             except Exception as e:
                 responseData={
                     'status':0,
-                    'message':'Error deleting service. Please contact cutomer care fo assistance'
+                    'message':'Error deleting service. Please contact customer care for assistance'
                 }
+        if self.data['activityID'] == 'signOut':
+            responseData=Auth(data=self.data['data']['login_id']).signOut()
+            
 
         return responseData

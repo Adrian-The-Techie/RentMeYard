@@ -30,10 +30,10 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = 'wmu47e_gya7%m&takhznoq+&c%5!)!2@vfup81l+hy&81*$722'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.100.149',
+    '192.168.100.213',
     'rentmeyard.herokuapp.com'
 ]
 
