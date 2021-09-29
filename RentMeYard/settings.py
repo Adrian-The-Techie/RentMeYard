@@ -30,10 +30,11 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = 'wmu47e_gya7%m&takhznoq+&c%5!)!2@vfup81l+hy&81*$722'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.100.213',
+    '192.168.100.106',
+    '127.0.0.1',
     'rentmeyard.herokuapp.com'
 ]
 
@@ -133,15 +134,15 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/')
 ]
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT=os.path.join(BASE_DIR, 'consumer/static/images/')
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'consumer/static/images/')
+MEDIA_URL = '/media/'
 
-AUTH_USER_MODEL='consumer.Users'
+AUTH_USER_MODEL = 'consumer.Users'
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL = True

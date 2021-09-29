@@ -1,22 +1,22 @@
-$btnBgColor:rgb(255, 153, 0);
-$themeColors:(
-    'orange':rgb(255, 153, 0),
-    'grey':grey,
-    'navy-blue':#304E6B
+$btnBgColor: rgb(255, 153, 0);
+$themeColors: (
+  "orange": rgb(255, 153, 0),
+  "grey": grey,
+  "navy-blue": #304e6b,
 );
 
-@mixin media-md{
-    @media screen and (min-width:600px){
-        @content;
-    }
+@mixin media-md {
+  @media screen and (min-width: 700px) {
+    @content;
+  }
 }
-@mixin media-lg{
-    @media screen and (min-width:900px){
-        @content;
-    }
+@mixin media-lg {
+  @media screen and (min-width: 900px) {
+    @content;
+  }
 }
-@mixin media-xl{
-    @media screen and (min-width:1545.6px){
-        @content;
-    }
+@mixin media-xl {
+  @media screen and (min-width: 1545.6px) {
+    @content;
+  }
 }
